@@ -109,29 +109,33 @@ const { title, description, canonical } = Astro.props;
         // --- Section reveals (ScrollTrigger) ---
         var reveals = document.querySelectorAll('.reveal-up');
         reveals.forEach(function(el) {
-          gsap.from(el, {
-            y: 60, opacity: 0, duration: 0.6,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: el,
-              start: 'top 85%',
-              toggleActions: 'play none none none'
-            }
-          });
+        gsap.fromTo(el, {
+        y: 60, opacity: 0
+        }, {
+        y: 0, opacity: 1, duration: 0.6,
+        ease: 'power2.out',
+        scrollTrigger: {
+        trigger: el,
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+        }
+        });
         });
 
         // --- Staggered cards ---
         var groups = document.querySelectorAll('.stagger-group');
         groups.forEach(function(group) {
-          gsap.from(group.children, {
-            y: 50, opacity: 0, duration: 0.5,
-            stagger: 0.12, ease: 'power2.out',
-            scrollTrigger: {
-              trigger: group,
-              start: 'top 80%',
-              toggleActions: 'play none none none'
-            }
-          });
+        gsap.fromTo(group.children, {
+        y: 50, opacity: 0
+        }, {
+        y: 0, opacity: 1, duration: 0.5,
+        stagger: 0.12, ease: 'power2.out',
+        scrollTrigger: {
+        trigger: group,
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+        }
+        });
         });
 
         // --- Parallax ---
