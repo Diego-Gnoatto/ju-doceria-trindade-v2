@@ -1,0 +1,45 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+}
+const { title, description, canonical } = Astro.props;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+<meta name="theme-color" content="#1a0f0a" />
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="robots" content="index, follow" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:locale" content="pt_BR" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "Ju dOCERIA - Doces Caseiros",
+  "description": "Doces caseiros com receita da mae em Trindade, GO. Encomendas para festas, aulas de culinaria e delivery via WhatsApp.",
+  "url": canonical || "https://judoceria.com.br",
+  "telephone": "+55-62-99635-8321",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Trindade",
+    "addressRegion": "GO",
+    "addressCountry": "BR"
+  },
+  "servesCuisine": "Confeitaria Artesanal",
+  "priceRange": "$$",
+  "openingHours": "Mo-Sa 08:00-18:00"
+})} />
+
+<link rel="alternate" type="text/plain" href="/llms.txt" />

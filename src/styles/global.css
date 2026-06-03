@@ -1,0 +1,220 @@
+/* Ju dOCERIA v2 - "Confeitaria Viva" */
+/* DIALS: DESIGN_VARIANCE:9 | MOTION_INTENSITY:8 | VISUAL_DENSITY:3 */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+:root {
+  --font-display: 'Fraunces', serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-accent: 'Cormorant Garamond', serif;
+
+  --color-bg: hsl(25, 50%, 8%);
+  --color-bg-elevated: hsl(25, 35%, 14%);
+  --color-surface: hsl(28, 25%, 18%);
+  --color-primary: hsl(28, 85%, 58%);
+  --color-primary-light: hsl(28, 85%, 68%);
+  --color-accent: hsl(345, 70%, 60%);
+  --color-accent-alt: hsl(45, 80%, 55%);
+  --color-text: hsl(30, 30%, 92%);
+  --color-text-muted: hsl(25, 15%, 60%);
+  --color-border: hsl(25, 20%, 22%);
+  --color-whatsapp: hsl(142, 72%, 38%);
+  --color-glow: hsla(28, 85%, 58%, 0.15);
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1.25rem;
+  --space-lg: 2.5rem;
+  --space-xl: 5rem;
+  --space-2xl: 8rem;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 2rem;
+  --radius-full: 9999px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.1; font-weight: 600; }
+h1 { font-size: clamp(3rem, 7vw, 5.5rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(2rem, 4.5vw, 3rem); }
+h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
+
+a { color: var(--color-primary); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--color-primary-light); }
+img { max-width: 100%; height: auto; display: block; }
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* === BUTTONS === */
+.btn {
+  display: inline-flex; align-items: center; gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-full);
+  font-weight: 700; font-size: 1rem; font-family: var(--font-body);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer; border: none; text-decoration: none;
+  position: relative; overflow: hidden;
+}
+.btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, hsla(0,0%,100%,0.1), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.btn:hover::before { opacity: 1; }
+
+.btn-primary { background: var(--color-primary); color: var(--color-bg); }
+.btn-primary:hover { box-shadow: 0 0 30px var(--color-glow); transform: translateY(-2px); }
+
+.btn-whatsapp {
+  background: var(--color-whatsapp); color: white;
+  font-size: 1.05rem; padding: var(--space-md) var(--space-xl);
+}
+.btn-whatsapp:hover {
+  box-shadow: 0 0 25px hsla(142, 72%, 38%, 0.4);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn-accent { background: var(--color-accent); color: white; }
+.btn-outline {
+  background: transparent; border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+.btn-outline:hover { background: var(--color-primary); color: var(--color-bg); }
+
+/* === SECTIONS === */
+.section { padding: var(--space-2xl) 0; position: relative; }
+.section-title {
+  text-align: left; margin-bottom: var(--space-xl);
+  color: var(--color-text);
+}
+.section-subtitle {
+  color: var(--color-text-muted);
+  max-width: 550px; font-size: 1.1rem; margin-bottom: var(--space-xl);
+  line-height: 1.7;
+}
+
+/* === CARDS === */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+.card::after {
+  content: ''; position: absolute; inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  opacity: 0; z-index: -1; transition: opacity 0.4s;
+}
+.card:hover {
+  transform: rotate(0deg) translateY(-6px);
+  box-shadow: 0 0 40px var(--color-glow), 0 12px 40px hsla(25,50%,8%,0.6);
+  border-color: transparent;
+}
+.card:hover::after { opacity: 1; }
+
+/* === GRIDS (anti-slop: asymmetric) === */
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-lg); }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-lg); }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-lg); }
+
+/* Stagger rotation on cards (anti-slop: no identical grids) */
+.grid-stagger > *:nth-child(1) { transform: rotate(-1deg); }
+.grid-stagger > *:nth-child(2) { transform: rotate(0.5deg); }
+.grid-stagger > *:nth-child(3) { transform: rotate(-0.8deg); }
+.grid-stagger > *:nth-child(4) { transform: rotate(1.2deg); }
+.grid-stagger > *:nth-child(5) { transform: rotate(-0.5deg); }
+.grid-stagger > *:nth-child(6) { transform: rotate(0.7deg); }
+
+/* === WHATSAPP FLOAT === */
+.whatsapp-float {
+  position: fixed; bottom: 2rem; right: 2rem;
+  width: 64px; height: 64px;
+  background: var(--color-whatsapp); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 25px hsla(142,72%,38%,0.5);
+  z-index: 1000;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.whatsapp-float:hover { transform: scale(1.12); }
+.whatsapp-float svg { width: 32px; height: 32px; fill: white; }
+
+/* === FAQ === */
+.faq-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden; margin-bottom: var(--space-sm);
+}
+.faq-item summary {
+  padding: var(--space-lg);
+  cursor: pointer; font-weight: 600;
+  color: var(--color-text);
+  list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-display);
+}
+.faq-item summary::after {
+  content: '+'; font-size: 1.5rem; color: var(--color-primary);
+  transition: transform 0.3s;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p {
+  padding: 0 var(--space-lg) var(--space-lg);
+  color: var(--color-text-muted); line-height: 1.7;
+}
+
+/* === CTA SECTIONS === */
+.cta-section {
+  background: linear-gradient(135deg, hsl(25,50%,12%), hsl(28,60%,15%));
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* === GLOW EFFECTS === */
+.glow-text { text-shadow: 0 0 40px var(--color-glow); }
+.glow-border {
+  border: 1px solid hsla(28,85%,58%,0.3);
+  box-shadow: 0 0 20px var(--color-glow);
+}
+
+/* === DECORATIVE === */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.8rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+  display: block;
+}
+.quote-text {
+  font-family: var(--font-accent);
+  font-style: italic; font-size: 1.3rem;
+  line-height: 1.5; color: var(--color-text);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .section { padding: var(--space-xl) 0; }
+  .container { padding: 0 var(--space-md); }
+  .grid-stagger > * { transform: none !important; }
+}
