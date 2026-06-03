@@ -1,4 +1,4 @@
-/* Ju dOCERIA v2 - "Confeitaria Viva" */
+/* Ju dOCERIA v2 - "Confeitaria Viva" - Feminine Redesign */
 /* DIALS: DESIGN_VARIANCE:9 | MOTION_INTENSITY:8 | VISUAL_DENSITY:3 */
 
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap');
@@ -8,18 +8,26 @@
   --font-body: 'DM Sans', system-ui, sans-serif;
   --font-accent: 'Cormorant Garamond', serif;
 
-  --color-bg: hsl(25, 50%, 8%);
-  --color-bg-elevated: hsl(25, 35%, 14%);
-  --color-surface: hsl(28, 25%, 18%);
-  --color-primary: hsl(28, 85%, 58%);
-  --color-primary-light: hsl(28, 85%, 68%);
-  --color-accent: hsl(345, 70%, 60%);
-  --color-accent-alt: hsl(45, 80%, 55%);
-  --color-text: hsl(30, 30%, 92%);
-  --color-text-muted: hsl(25, 15%, 60%);
-  --color-border: hsl(25, 20%, 22%);
-  --color-whatsapp: hsl(142, 72%, 38%);
-  --color-glow: hsla(28, 85%, 58%, 0.15);
+  /* === FEMININE PALETTE: Rose, Blush, Cream, Soft Cocoa === */
+  --color-bg: hsl(340, 20%, 96%);              /* warm blush white */
+  --color-bg-elevated: hsl(340, 25%, 92%);     /* slightly deeper blush */
+  --color-surface: hsl(340, 30%, 97%);         /* soft cream card bg */
+  --color-primary: hsl(345, 65%, 52%);         /* confident rose */
+  --color-primary-light: hsl(345, 70%, 65%);   /* soft rose */
+  --color-accent: hsl(28, 70%, 55%);           /* warm caramel accent */
+  --color-accent-alt: hsl(280, 40%, 60%);      /* soft lavender for variety */
+  --color-text: hsl(340, 30%, 15%);            /* dark cocoa text */
+  --color-text-muted: hsl(340, 15%, 45%);      /* muted rosewood */
+  --color-border: hsl(340, 20%, 88%);          /* delicate blush border */
+  --color-whatsapp: hsl(142, 72%, 38%);        /* standard green */
+  --color-glow: hsla(345, 65%, 52%, 0.12);     /* rose glow for shadows */
+  --color-hero-gradient: hsla(345, 50%, 85%, 0.4); /* hero bg accent */
+
+  /* Dark mode variant for contrast sections */
+  --color-dark-bg: hsl(340, 25%, 12%);          /* deep rosewood */
+  --color-dark-surface: hsl(340, 20%, 18%);     /* dark rosewood surface */
+  --color-dark-text: hsl(340, 30%, 92%);        /* cream on dark */
+  --color-dark-text-muted: hsl(340, 15%, 65%);  /* muted on dark */
 
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
@@ -28,8 +36,8 @@
   --space-xl: 5rem;
   --space-2xl: 8rem;
 
-  --radius-sm: 0.5rem;
-  --radius-md: 1rem;
+  --radius-sm: 0.75rem;
+  --radius-md: 1.25rem;
   --radius-lg: 2rem;
   --radius-full: 9999px;
 }
@@ -74,12 +82,12 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .btn::before {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, hsla(0,0%,100%,0.1), transparent);
+  background: linear-gradient(135deg, hsla(0,0%,100%,0.2), transparent);
   opacity: 0; transition: opacity 0.3s;
 }
 .btn:hover::before { opacity: 1; }
 
-.btn-primary { background: var(--color-primary); color: var(--color-bg); }
+.btn-primary { background: var(--color-primary); color: white; }
 .btn-primary:hover { box-shadow: 0 0 30px var(--color-glow); transform: translateY(-2px); }
 
 .btn-whatsapp {
@@ -96,7 +104,7 @@ img { max-width: 100%; height: auto; display: block; }
   background: transparent; border: 2px solid var(--color-primary);
   color: var(--color-primary);
 }
-.btn-outline:hover { background: var(--color-primary); color: var(--color-bg); }
+.btn-outline:hover { background: var(--color-primary); color: white; }
 
 /* === SECTIONS === */
 .section { padding: var(--space-2xl) 0; position: relative; }
@@ -122,12 +130,12 @@ img { max-width: 100%; height: auto; display: block; }
 .card::after {
   content: ''; position: absolute; inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent-alt));
   opacity: 0; z-index: -1; transition: opacity 0.4s;
 }
 .card:hover {
   transform: rotate(0deg) translateY(-6px);
-  box-shadow: 0 0 40px var(--color-glow), 0 12px 40px hsla(25,50%,8%,0.6);
+  box-shadow: 0 8px 30px var(--color-glow), 0 4px 20px hsla(340,30%,50%,0.08);
   border-color: transparent;
 }
 .card:hover::after { opacity: 1; }
@@ -183,17 +191,21 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--color-text-muted); line-height: 1.7;
 }
 
-/* === CTA SECTIONS === */
+/* === CTA SECTIONS (dark contrast) === */
 .cta-section {
-  background: linear-gradient(135deg, hsl(25,50%,12%), hsl(28,60%,15%));
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  background: var(--color-dark-bg);
+  border-top: 1px solid hsla(340, 20%, 25%, 0.5);
+  border-bottom: 1px solid hsla(340, 20%, 25%, 0.5);
+  color: var(--color-dark-text);
 }
+.cta-section .section-title { color: var(--color-dark-text); }
+.cta-section .eyebrow { color: var(--color-primary-light); }
+.cta-section .section-subtitle { color: var(--color-dark-text-muted); }
 
 /* === GLOW EFFECTS === */
 .glow-text { text-shadow: 0 0 40px var(--color-glow); }
 .glow-border {
-  border: 1px solid hsla(28,85%,58%,0.3);
+  border: 1px solid hsla(345, 65%, 52%, 0.25);
   box-shadow: 0 0 20px var(--color-glow);
 }
 
@@ -210,6 +222,12 @@ img { max-width: 100%; height: auto; display: block; }
   font-family: var(--font-accent);
   font-style: italic; font-size: 1.3rem;
   line-height: 1.5; color: var(--color-text);
+}
+
+/* === GSAP INITIAL STATES (prevents FOUC) === */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(60px);
 }
 
 /* === RESPONSIVE === */
